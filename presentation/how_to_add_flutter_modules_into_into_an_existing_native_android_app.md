@@ -1,16 +1,14 @@
 ---
-theme: "white"
+theme: "Solarized"
 transition: "zoom"
-highlightTheme: "darkula"
+highlightTheme: "railscasts"
 ---
 
-## How to add Flutter modules into an existing Native Android app
-
-### Kenny
+# How to add Flutter modules into an existing Native Android app
 
 ---
 
-### Plugin vs Module
+## Plugin vs Module
 
 | Plugin | Module |
 |---|---|
@@ -150,16 +148,9 @@ dependencies:
 ```
 
 ```dart
-import 'dart:ui';
-
-import 'package:flutter/material.dart';
-import 'package:greenmodule/main.dart';
-import 'package:redmodule/main.dart';
-
-void main() => runApp(Pallet(route: window.defaultRouteName,));
+void main() => runApp(Pallet(route: window.defaultRouteName));
 
 class Pallet extends StatelessWidget {
-
   final String route;
   Pallet({this.route});
 
@@ -219,8 +210,6 @@ FlutterEngineCache.getInstance().put("red", redEngine)
 ```kotlin
 class MainActivity : AppCompatActivity() {
 
-    // skip onCreate()
-
     fun onClickGreen(view: View) {
         startActivity(
             FlutterActivity
@@ -237,10 +226,19 @@ class MainActivity : AppCompatActivity() {
 
 ---
 
-### Links
+## Uncovered contents
+
+* Add a Flutter Fragment
+* Adding to an iOS app
+* How to pass arguments
+  - How to use MethodChannel
+
+---
+
+## Links
 
 https://flutter.dev/docs/development/add-to-app
 
 https://github.com/flutter/flutter/issues/39707#issuecomment-569120877
 
-[Sample project](https://github.com/KennyYi/flutter_module_sample)
+Sample project: https://github.com/KennyYi/flutter_module_sample
