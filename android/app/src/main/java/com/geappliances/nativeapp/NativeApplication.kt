@@ -9,25 +9,26 @@ class NativeApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        initFlutterEngine()
+    }
+
+    private fun initFlutterEngine() {
 
         val greenEngine = FlutterEngine(this)
-
         greenEngine.navigationChannel.setInitialRoute("green")
         greenEngine.dartExecutor.executeDartEntrypoint(
             DartExecutor.DartEntrypoint.createDefault()
         )
-
-        FlutterEngineCache.getInstance()
-            .put("green", greenEngine)
+        FlutterEngineCache.getInstance().put("green", greenEngine)
 
         val redEngine = FlutterEngine(this)
-
         redEngine.navigationChannel.setInitialRoute("red")
         redEngine.dartExecutor.executeDartEntrypoint(
             DartExecutor.DartEntrypoint.createDefault()
         )
-
-        FlutterEngineCache.getInstance()
-            .put("red", redEngine)
+        FlutterEngineCache.getInstance().put("red", redEngine)
     }
+
+    fun getFlutterEngine(engineId: String): FlutterEngine?
+            = FlutterEngineCache.getInstance().get(engineId)
 }

@@ -4,7 +4,7 @@ transition: "zoom"
 highlightTheme: "railscasts"
 ---
 
-# How to add Flutter modules into an existing Native Android app
+# How to integrate Flutter modules with an existing Native Android app
 
 ---
 
@@ -226,12 +226,76 @@ class MainActivity : AppCompatActivity() {
 
 ---
 
+### Step 6. Passing arguments
+
+---
+
+## 🤷‍♂️
+
+There is no way to pass parameters while starting the Flutter module.
+
+(I couldn't find it.)
+
+---
+
+Bypass using the **`PlatformChannel`** (`MethodChannel`)
+
+* MethodChannel
+  1. Call Native method from Flutter 👈
+  2. Call Flutter method from Flutter
+
+* In Android, `channel.invokeMethod("methodName")` should be called through **MainThread**.
+
+---
+
+```kotlin
+redChannel = MethodChannel(
+  redEngine.dartExecutor.binaryMessenger,
+  "pallet/red" // MethodChannel name
+)
+
+redChannel?.setMethodCallHandler { call, result ->
+
+    if(call.method == "getParam") {
+        result.success(getParam())
+    }
+}
+```
+
+```kotlin
+fun getParam(): String {
+    return "parameter"
+}
+```
+
+---
+
+```dart
+static const MethodChannel _channel = const MethodChannel(
+  "pallet/red" // MethodChannel name
+);
+
+// To call from initState, change widget to StatefulWidget
+@override
+void initState() {
+  super.initState();
+  getInitParam();
+}
+
+Future<void> getInitParam() async {
+  final String result = await _channel.invokeMethod("getParam");
+  setState(() => _result = result);
+}
+```
+
+---
+
 ## Uncovered contents
 
-* Add a Flutter Fragment
-* Adding to an iOS app
-* How to pass arguments
-  - How to use MethodChannel
+* Android basics
+* Flutter basics
+* Add a Flutter Fragment module
+* Add a Flutter module to an existing iOS app
 
 ---
 
@@ -240,5 +304,7 @@ class MainActivity : AppCompatActivity() {
 https://flutter.dev/docs/development/add-to-app
 
 https://github.com/flutter/flutter/issues/39707#issuecomment-569120877
+
+https://github.com/flutter-moum/flutter-moum/wiki/3.-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84-%5BMethodChannel%5D
 
 Sample project: https://github.com/KennyYi/flutter_module_sample
