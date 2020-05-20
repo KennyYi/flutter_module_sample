@@ -148,11 +148,11 @@ dependencies:
 ```
 
 ```dart
-void main() => runApp(Pallet(route: window.defaultRouteName));
+void main() => runApp(palette(route: window.defaultRouteName));
 
-class Pallet extends StatelessWidget {
+class palette extends StatelessWidget {
   final String route;
-  Pallet({this.route});
+  palette({this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -178,11 +178,11 @@ include ':app'
 setBinding(new Binding([gradle: this]))
 evaluate(new File(
   settingsDir,
-  '../pallet/.android/include_flutter.groovy'
+  '../palette/.android/include_flutter.groovy'
 ))
 
-include ':pallet'
-project(':pallet').projectDir = new File('../pallet')
+include ':palette'
+project(':palette').projectDir = new File('../palette')
 ```
 
 ---
@@ -251,7 +251,7 @@ Bypass using the **`PlatformChannel`** (`MethodChannel`)
 ```kotlin
 redChannel = MethodChannel(
   redEngine.dartExecutor.binaryMessenger,
-  "pallet/red" // MethodChannel name
+  "palette/red" // MethodChannel name
 )
 
 redChannel?.setMethodCallHandler { call, result ->
@@ -272,7 +272,7 @@ fun getParam(): String {
 
 ```dart
 static const MethodChannel _channel = const MethodChannel(
-  "pallet/red" // MethodChannel name
+  "palette/red" // MethodChannel name
 );
 
 // To call from initState, change widget to StatefulWidget
