@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:greenmodule/main.dart';
 import 'package:redmodule/main.dart';
 
-void main() => runApp(Pallet(route: window.defaultRouteName,));
+void main() => runApp(Palette(route: window.defaultRouteName,));
 
-class Pallet extends StatelessWidget {
+class Palette extends StatelessWidget {
 
   final String route;
 
-  Pallet({this.route});
+  Palette({this.route});
 
   @override
   Widget build(BuildContext context) {

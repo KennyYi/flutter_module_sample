@@ -13,6 +13,6 @@ import 'package:pallet/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(Pallet());
+    await tester.pumpWidget(Palette());
   });
 }

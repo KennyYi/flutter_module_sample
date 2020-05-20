@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         (application as NativeApplication).getFlutterEngine("red")?.let { redEngine ->
 
-            MethodChannel(redEngine.dartExecutor.binaryMessenger, "pallet/red")
+            MethodChannel(redEngine.dartExecutor.binaryMessenger, "palette/red")
                 .setMethodCallHandler { call, result ->
                     if (call.method == "getTime") {
                         result.success(getTime())

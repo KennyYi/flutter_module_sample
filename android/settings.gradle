@@ -3,8 +3,8 @@ include ':app'
 setBinding(new Binding([gradle: this]))
 evaluate(new File(
   settingsDir,
-  '../pallet/.android/include_flutter.groovy'
+  '../palette/.android/include_flutter.groovy'
 ))
 
-include ':pallet'
-project(':pallet').projectDir = new File('../pallet')
+include ':palette'
+project(':palette').projectDir = new File('../palette')

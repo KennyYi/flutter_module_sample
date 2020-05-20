@@ -11,7 +11,7 @@ class RedModule extends StatefulWidget {
 
 class _RedModule extends State<RedModule> {
 
-  static const MethodChannel _channel = MethodChannel("pallet/red");
+  static const MethodChannel _channel = MethodChannel("palette/red");
 
   String _time = "";
 
