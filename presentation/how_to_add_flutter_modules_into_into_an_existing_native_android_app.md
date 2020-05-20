@@ -12,7 +12,7 @@ highlightTheme: "railscasts"
 
 | Plugin | Module |
 |---|---|
-| Maing native funtionality available to Flutter | Integrating Flutter with an existing native application |
+| Making native funtionality available to Flutter | Integrating Flutter with an existing native application |
 
 ---
 
